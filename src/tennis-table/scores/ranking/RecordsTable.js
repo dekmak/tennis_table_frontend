@@ -69,11 +69,10 @@ const applyPagination = (dataRecords, page, limit) => {
 };
 
 const RecordsTable = ({ dataRecords }) => {
-
   const [selecteddataRecords, setSelecteddataRecords] = useState([]);
   const selectedBulkActions = selecteddataRecords.length > 0;
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(50);
+  const [limit, setLimit] = useState(5);
   const [filters, setFilters] = useState({
     status: null
   });
@@ -112,18 +111,13 @@ const RecordsTable = ({ dataRecords }) => {
 
   const handleSelectAlldataRecords = (event) => {
     setSelecteddataRecords(
-      event.target.checked
-        ? dataRecords.map((dataRecord) => dataRecord.id)
-        : []
+      event.target.checked ? dataRecords.map((dataRecord) => dataRecord.id) : []
     );
   };
 
   const handleSelectOnedataRecord = (event, dataRecordId) => {
     if (!selecteddataRecords.includes(dataRecordId)) {
-      setSelecteddataRecords((prevSelected) => [
-        ...prevSelected,
-        dataRecordId
-      ]);
+      setSelecteddataRecords((prevSelected) => [...prevSelected, dataRecordId]);
     } else {
       setSelecteddataRecords((prevSelected) =>
         prevSelected.filter((id) => id !== dataRecordId)
@@ -164,47 +158,48 @@ const RecordsTable = ({ dataRecords }) => {
         <Table>
           <TableHead>
             <TableRow>
-              <TableCell padding="checkbox">
+              {/* <TableCell padding="checkbox">
                 <Checkbox
                   color="primary"
                   checked={selectedAlldataRecords}
                   indeterminate={selectedSomedataRecords}
                   onChange={handleSelectAlldataRecords}
                 />
-              </TableCell>
+              </TableCell> */}
+              <TableCell>RANK</TableCell>
               <TableCell></TableCell>
-              <TableCell>Name</TableCell>
+              <TableCell>Player Name</TableCell>
               <TableCell>Country</TableCell>
-              <TableCell>Total Points</TableCell>
+              <TableCell align='right'>Total Points</TableCell>
               {/* <TableCell align="right">Actions</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
             {paginateddataRecords.map((dataRecord) => {
               const isdataRecordSelected = selecteddataRecords.includes(
-                dataRecord.player_id
+                dataRecord.rank
               );
               return (
                 <TableRow
                   hover
-                  key={dataRecord.player_id}
+                  key={dataRecord.rank}
                   selected={isdataRecordSelected}
                 >
-                  <TableCell padding="checkbox">
-                    <Checkbox
-                      color="primary"
-                      checked={isdataRecordSelected}
-                      onChange={(event) =>
-                        handleSelectOnedataRecord(event, dataRecord.player_id)
-                      }
-                      value={isdataRecordSelected}
-                    />
-                  </TableCell>
-                  <TableCell>
-                    <Avatar
-                      src={dataRecord.profile_pic}
+                  <TableCell width={10}>
+                    <Typography
+                      variant="h3"
+                      fontWeight="bold"
+                      color="text.primary"
+                      gutterBottom
+                      noWrap
+                      color={"crimson"}
+                      textAlign={"center"}
                     >
-                    </Avatar>
+                      {dataRecord.rank}
+                    </Typography>
+                  </TableCell>
+                  <TableCell width={10}>
+                    <Avatar src={dataRecord.player_profile_pic}></Avatar>
                   </TableCell>
                   <TableCell>
                     <Typography
@@ -216,17 +211,13 @@ const RecordsTable = ({ dataRecords }) => {
                     >
                       {dataRecord.player_name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary" noWrap>
-                      {dataRecord.age} years
-                    </Typography>
                   </TableCell>
                   <TableCell>
                     <Avatar
-                      variant='square'
+                      variant="square"
                       sx={{ width: 50, height: 30 }}
-                      src={`https://documentstore.ittf.com/websitefiles/assets/flags_normal/${dataRecord.country.toLowerCase()}.png`}
-                    >
-                    </Avatar>
+                      src={`https://documentstore.ittf.com/websitefiles/assets/flags_normal/${dataRecord.player_country.toLowerCase()}.png`}
+                    ></Avatar>
                   </TableCell>
                   <TableCell>
                     <Typography
@@ -235,6 +226,7 @@ const RecordsTable = ({ dataRecords }) => {
                       color="text.primary"
                       gutterBottom
                       noWrap
+                      align='right'
                     >
                       {dataRecord.total_points}
                     </Typography>

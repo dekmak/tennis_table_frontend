@@ -50,7 +50,7 @@ function BulkActions() {
             startIcon={<DeleteTwoToneIcon />}
             variant="contained"
           >
-            Delete
+            Remove
           </ButtonError>
         </Box>
         <IconButton

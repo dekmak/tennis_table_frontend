@@ -9,13 +9,30 @@ export const FetchAllPlayers = async() => {
         profile_pic
         age
         country
-        created_at
         total_points
+      }
+    }`;
+  const apiData = await API.graphql(graphqlOperation(query));
+  const results = apiData.data.players;
+  return results;
+}
+
+export const FetchAllRanks = async() => {
+  const query = `
+    {
+      ranks {
+        rank
+        game_type
+        player_id
+        total_points
+        player_name
+        player_country
+        player_profile_pic
       }
     }`;
   
   const apiData = await API.graphql(graphqlOperation(query));
-  const results = apiData.data.players;
+  const results = apiData.data.ranks;
   return results;
 }
 
