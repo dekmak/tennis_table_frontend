@@ -48,7 +48,6 @@ export const FetchAllGames = async() => {
         player_1_score
         player_2_score
         winner_id
-        nb_rounds
         start_time
         end_time
       }
@@ -66,7 +65,6 @@ export const FetchAllDisplayGames = async() => {
         game_id
         event_name
         subevent_name
-        nb_rounds
         player_1_name
         player_2_name
         player_1_profile
