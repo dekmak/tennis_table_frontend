@@ -72,7 +72,7 @@ const RecordsTable = ({ dataRecords }) => {
   const [selecteddataRecords, setSelecteddataRecords] = useState([]);
   const selectedBulkActions = selecteddataRecords.length > 0;
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(100);
   const [filters, setFilters] = useState({
     status: null
   });

@@ -72,7 +72,7 @@ const RecordsTable = ({ dataRecords }) => {
   const [selecteddataRecords, setSelecteddataRecords] = useState([]);
   const selectedBulkActions = selecteddataRecords.length > 0;
   const [page, setPage] = useState(0);
-  const [limit, setLimit] = useState(5);
+  const [limit, setLimit] = useState(1000);
   const [filters, setFilters] = useState({
     status: null
   });
@@ -139,12 +139,6 @@ const RecordsTable = ({ dataRecords }) => {
     page,
     limit
   );
-  const selectedSomedataRecords =
-    selecteddataRecords.length > 0 &&
-    selecteddataRecords.length < dataRecords.length;
-  const selectedAlldataRecords =
-    selecteddataRecords.length === dataRecords.length;
-  const theme = useTheme();
 
   return (
     <Card>
@@ -158,20 +152,10 @@ const RecordsTable = ({ dataRecords }) => {
         <Table>
           <TableHead>
             <TableRow>
-              {/* <TableCell padding="checkbox">
-                <Checkbox
-                  color="primary"
-                  checked={selectedAlldataRecords}
-                  indeterminate={selectedSomedataRecords}
-                  onChange={handleSelectAlldataRecords}
-                />
-              </TableCell> */}
               <TableCell></TableCell>
               <TableCell>Game Name</TableCell>
               <TableCell>First Player</TableCell>
               <TableCell>Second Player</TableCell>
-              <TableCell>Nb of Rounds</TableCell>
-              {/* <TableCell align="right">Actions</TableCell> */}
             </TableRow>
           </TableHead>
           <TableBody>
@@ -185,21 +169,7 @@ const RecordsTable = ({ dataRecords }) => {
                   key={dataRecord.game_id}
                   selected={isdataRecordSelected}
                 >
-                  {/* <TableCell padding="checkbox">
-                    <Checkbox
-                      color="primary"
-                      checked={isdataRecordSelected}
-                      onChange={(event) =>
-                        handleSelectOnedataRecord(event, dataRecord.game_id)
-                      }
-                      value={isdataRecordSelected}
-                    />
-                  </TableCell> */}
                   <TableCell>
-                    {/* <Avatar
-                      src={dataRecord.profile_pic}
-                    >
-                    </Avatar> */}
                   </TableCell>
                   <TableCell>
                     <Typography
@@ -239,62 +209,12 @@ const RecordsTable = ({ dataRecords }) => {
                       {dataRecord.player_2_name} ({dataRecord.player_2_score})
                     </Typography>
                   </TableCell>
-                  <TableCell>
-                    <Typography
-                      variant="body1"
-                      fontWeight="bold"
-                      color="text.primary"
-                      gutterBottom
-                      noWrap
-                    >
-                      {dataRecord.nb_rounds}
-                    </Typography>
-                  </TableCell>
-                  {/* <TableCell align="right">
-                    <Tooltip title="Edit Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': {
-                            background: theme.colors.primary.lighter
-                          },
-                          color: theme.palette.primary.main
-                        }}
-                        color="inherit"
-                        size="small"
-                      >
-                        <EditTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                    <Tooltip title="Delete Order" arrow>
-                      <IconButton
-                        sx={{
-                          '&:hover': { background: theme.colors.error.lighter },
-                          color: theme.palette.error.main
-                        }}
-                        color="inherit"
-                        size="small"
-                      >
-                        <DeleteTwoToneIcon fontSize="small" />
-                      </IconButton>
-                    </Tooltip>
-                  </TableCell> */}
                 </TableRow>
               );
             })}
           </TableBody>
         </Table>
       </TableContainer>
-      {/* <Box p={2}>
-        <TablePagination
-          component="div"
-          count={filtereddataRecords.length}
-          onPageChange={handlePageChange}
-          onRowsPerPageChange={handleLimitChange}
-          page={page}
-          rowsPerPage={limit}
-          rowsPerPageOptions={[5, 10, 25, 30]}
-        />
-      </Box> */}
     </Card>
   );
 };

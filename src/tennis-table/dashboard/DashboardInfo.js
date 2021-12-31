@@ -6,7 +6,6 @@ import {
   Typography,
   Hidden,
   Avatar,
-  Divider,
   ListItem,
   ListItemText,
   List,
@@ -14,8 +13,17 @@ import {
 } from '@mui/material';
 
 import TrendingUp from '@mui/icons-material/TrendingUp';
+import { useNavigate } from "react-router-dom";
 
 function DashboardInfo() {
+
+  let navigate  = useNavigate();
+
+  function onStartGameClick() {
+    navigate(
+      `/admin/newgame`
+    );
+  }
 
   return (
     <Card>
@@ -46,7 +54,8 @@ function DashboardInfo() {
             </Box>
             <Grid container spacing={3}>
               <Grid sm item>
-                <Button fullWidth variant="contained">
+                <Button fullWidth variant="contained"
+                onClick={onStartGameClick}>
                   Start a new game !
                 </Button>
               </Grid>
