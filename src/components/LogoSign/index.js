@@ -74,7 +74,7 @@ function Logo() {
 
   return (
     <Tooltip title="" arrow>
-      <LogoWrapper to="/overview">
+      <LogoWrapper to="/home">
         <LogoSignWrapper>
           <LogoSign>
             <LogoSignInner />

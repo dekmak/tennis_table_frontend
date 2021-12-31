@@ -102,9 +102,9 @@ function Logo() {
 
 
   return (
-    <LogoWrapper to="/overview">
+    <LogoWrapper to="/home">
       <LogoSignWrapper>
-        <img src='/logo.jpg' width={'64px'}></img>
+        <img src='/logo2.jpg' width={'64px'}></img>
       </LogoSignWrapper>
       <Hidden smDown>
         <LogoTextWrapper>

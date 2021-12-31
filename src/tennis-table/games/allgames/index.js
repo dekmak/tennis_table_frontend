@@ -4,13 +4,13 @@ import PageTitleWrapper from 'src/components/PageTitleWrapper';
 import { Container, Grid } from '@mui/material';
 import Footer from 'src/components/Footer';
 
-import DashboardInfo from './DashboardInfo';
+import AllGames from './AllGames';
 
-function Dashboard() {
+function ApplicationsPage() {
   return (
     <>
       <Helmet>
-        <title>Tennis Table Game</title>
+        <title>Games - Tennis Table</title>
       </Helmet>
       <PageTitleWrapper>
         <PageHeader />
@@ -24,7 +24,7 @@ function Dashboard() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <DashboardInfo />
+            <AllGames />
           </Grid>
         </Grid>
       </Container>
@@ -33,4 +33,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default ApplicationsPage;

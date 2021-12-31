@@ -1,20 +1,18 @@
-import { Helmet } from 'react-helmet-async';
-import PageHeader from './PageHeader';
-import PageTitleWrapper from 'src/components/PageTitleWrapper';
-import { Container, Grid } from '@mui/material';
+import { Typography, Avatar, Grid, Container } from '@mui/material';
 import Footer from 'src/components/Footer';
+import { useTheme } from '@mui/material/styles';
+import { Helmet } from 'react-helmet-async';
+import NewGameForm from './NewGameForm';
 
-import DashboardInfo from './DashboardInfo';
-
-function Dashboard() {
+function ApplicationsPage() {
   return (
     <>
       <Helmet>
-        <title>Tennis Table Game</title>
+        <title>Players - Tennis Table</title>
       </Helmet>
-      <PageTitleWrapper>
+      {/* <PageTitleWrapper>
         <PageHeader />
-      </PageTitleWrapper>
+      </PageTitleWrapper> */}
       <Container maxWidth="lg">
         <Grid
           container
@@ -24,7 +22,8 @@ function Dashboard() {
           spacing={3}
         >
           <Grid item xs={12}>
-            <DashboardInfo />
+            <br />
+            <NewGameForm />
           </Grid>
         </Grid>
       </Container>
@@ -33,4 +32,4 @@ function Dashboard() {
   );
 }
 
-export default Dashboard;
+export default ApplicationsPage;

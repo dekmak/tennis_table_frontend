@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 
-import { Box, Hidden, IconButton, Tooltip } from '@mui/material';
+import { Badge, Box, Hidden, IconButton, Tooltip } from '@mui/material';
+import Typography from '@mui/material/Typography';
 import { styled } from '@mui/material/styles';
 import MenuTwoToneIcon from '@mui/icons-material/MenuTwoTone';
 import { SidebarContext } from 'src/contexts/SidebarContext';
@@ -8,7 +9,6 @@ import CloseTwoToneIcon from '@mui/icons-material/CloseTwoTone';
 
 import HeaderMenu from './Menu';
 import HeaderButtons from './Buttons';
-import HeaderUserbox from './Userbox';
 import Logo from 'src/components/Logo';
 
 const HeaderWrapper = styled(Box)(
@@ -40,10 +40,12 @@ function Header() {
           <Logo />
         </Hidden>
         <Hidden mdDown>
-          <HeaderMenu />
+          <Typography variant="h3" component="h3" gutterBottom>
+            Welcome to the platform !
+          </Typography>
         </Hidden>
       </Box>
-      <Box display="flex" alignItems="center">
+      {/* <Box display="flex" alignItems="center">
         <HeaderButtons />
         <HeaderUserbox />
         <Hidden lgUp>
@@ -53,7 +55,7 @@ function Header() {
             </IconButton>
           </Tooltip>
         </Hidden>
-      </Box>
+      </Box> */}
     </HeaderWrapper>
   );
 }
