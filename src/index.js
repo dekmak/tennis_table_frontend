@@ -1,7 +1,7 @@
 import App from './App';
 import ReactDOM from 'react-dom';
 import 'src/utils/chart';
-import * as serviceWorker from './serviceWorker';
+// import * as serviceWorker from './serviceWorker';
 import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter } from 'react-router-dom';
 
@@ -19,4 +19,4 @@ ReactDOM.render(
   document.getElementById('root')
 );
 
-serviceWorker.unregister();
+//serviceWorker.unregister();
