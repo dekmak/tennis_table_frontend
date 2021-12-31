@@ -2,6 +2,7 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import {
   Box,
+  Alert,
   Card,
   CardActions,
   Typography,
@@ -55,10 +56,11 @@ const GameBoard = ({ gameId, leftPlayer, rightPlayer }) => {
     `;
     API.graphql({ query: addGamePoint })
       .then((e) => {
-        console.log(e);
+        //console.log(e);
         //setGameId(e.data.addGame.game_id);
         if (e.data.addGamePoint.end_time != null ) {
-
+          //console.log('Game is over !')
+          setIsGameOver(true);
         }
       });
   }
